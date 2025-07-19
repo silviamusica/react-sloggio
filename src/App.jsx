@@ -12,6 +12,34 @@ const TiSveloUnSegretoApp = () => {
   const [showResult, setShowResult] = useState(false);
   const [customText, setCustomText] = useState('');
   const [generatedBart, setGeneratedBart] = useState('');
+  const [shuffledExamples, setShuffledExamples] = useState([]);
+  const [shuffledQuizzes, setShuffledQuizzes] = useState([]);
+
+  // Funzione per mescolare un array
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Inizializza gli array mescolati quando il componente si monta
+  useEffect(() => {
+    setShuffledExamples(shuffleArray(wrongExamples));
+    setShuffledQuizzes(shuffleArray(quizzes));
+  }, []);
+
+  // Funzione per rimescolare esempi e quiz
+  const reshuffleContent = () => {
+    setShuffledExamples(shuffleArray(wrongExamples));
+    setShuffledQuizzes(shuffleArray(quizzes));
+    setCurrentExample(0);
+    setCurrentQuiz(0);
+    setSelectedAnswer('');
+    setShowResult(false);
+  };
 
   // Esempi di "piuttosto che" usato male (con più opzioni)
   const wrongExamples = [
@@ -193,27 +221,44 @@ const TiSveloUnSegretoApp = () => {
       {/* Menu Principale */}
       <div className="px-6 space-y-4 pb-8">
         <button
-          onClick={() => setCurrentScreen('examples')}
+          onClick={() => {
+            reshuffleContent();
+            setCurrentScreen('examples');
+          }}
           className="w-full bg-gradient-to-r from-indigo-700 to-blue-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
         >
           <div className="text-3xl">🤦‍♂️</div>
           <div className="text-left">
             <h3 className="font-bold text-lg">Orrori Grammaticali</h3>
-            <p className="text-indigo-200">10 esempi di "piuttosto che" selvaggio</p>
+            <p className="text-indigo-200">Esempi casuali di "piuttosto che" selvaggio</p>
           </div>
           <AlertTriangle className="ml-auto text-cyan-300" />
         </button>
 
         <button
-          onClick={() => setCurrentScreen('quiz')}
+          onClick={() => {
+            reshuffleContent();
+            setCurrentScreen('quiz');
+          }}
           className="w-full bg-gradient-to-r from-slate-700 to-slate-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
         >
           <div className="text-3xl">🧠</div>
           <div className="text-left">
             <h3 className="font-bold text-lg">Test Anti-Virus</h3>
-            <p className="text-slate-200">Sei immune al "piuttosto che" multiplo?</p>
+            <p className="text-slate-200">Quiz casuali per testare la tua immunità</p>
           </div>
           <Coffee className="ml-auto" />
+        </button>
+
+        <button
+          onClick={reshuffleContent}
+          className="w-full bg-gradient-to-r from-purple-700 to-purple-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+        >
+          <div className="text-3xl">🔄</div>
+          <div className="text-left">
+            <h3 className="font-bold text-lg">Mescola Contenuti</h3>
+            <p className="text-purple-200">Nuovi esempi e domande casuali</p>
+          </div>
         </button>
 
         <button
@@ -232,7 +277,9 @@ const TiSveloUnSegretoApp = () => {
   );
 
   const renderExamples = () => {
-    const example = wrongExamples[currentExample];
+    // Se non ci sono esempi mescolati ancora, usa l'array originale
+    const examplesArray = shuffledExamples.length > 0 ? shuffledExamples : wrongExamples;
+    const example = examplesArray[currentExample];
     
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-800 text-white p-6">
@@ -244,7 +291,7 @@ const TiSveloUnSegretoApp = () => {
             ← Indietro
           </button>
           <div className="text-center">
-            <p className="text-sm">Orrore {currentExample + 1}/{wrongExamples.length}</p>
+            <p className="text-sm">Orrore {currentExample + 1}/{examplesArray.length}</p>
           </div>
         </div>
 
@@ -295,10 +342,20 @@ const TiSveloUnSegretoApp = () => {
             >
               ← Precedente
             </button>
+
+            <button
+              onClick={() => {
+                reshuffleContent();
+                alert('🔄 Contenuti rimescolati! Nuovi esempi casuali!');
+              }}
+              className="bg-purple-600 p-3 rounded-lg font-bold text-white hover:bg-purple-500"
+            >
+              🔄
+            </button>
             
             <button
               onClick={() => {
-                if (currentExample < wrongExamples.length - 1) {
+                if (currentExample < examplesArray.length - 1) {
                   setCurrentExample(currentExample + 1);
                 } else {
                   setCurrentScreen('home');
@@ -308,7 +365,7 @@ const TiSveloUnSegretoApp = () => {
               }}
               className="flex-1 bg-cyan-500 text-black p-3 rounded-lg font-bold"
             >
-              {currentExample < wrongExamples.length - 1 ? 'Prossimo Orrore →' : 'Ho Capito! 🎯'}
+              {currentExample < examplesArray.length - 1 ? 'Prossimo Orrore →' : 'Ho Capito! 🎯'}
             </button>
           </div>
         </div>
@@ -317,7 +374,9 @@ const TiSveloUnSegretoApp = () => {
   };
 
   const renderQuiz = () => {
-    const quiz = quizzes[currentQuiz];
+    // Se non ci sono quiz mescolati ancora, usa l'array originale
+    const quizzesArray = shuffledQuizzes.length > 0 ? shuffledQuizzes : quizzes;
+    const quiz = quizzesArray[currentQuiz];
     
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-800 via-blue-900 to-cyan-800 text-white p-6">
@@ -329,8 +388,17 @@ const TiSveloUnSegretoApp = () => {
             ← Indietro
           </button>
           <div className="text-center">
-            <p className="text-sm">Test {currentQuiz + 1}/{quizzes.length}</p>
+            <p className="text-sm">Test {currentQuiz + 1}/{quizzesArray.length}</p>
           </div>
+          <button 
+            onClick={() => {
+              reshuffleContent();
+              alert('🔄 Quiz rimescolati! Nuove domande casuali!');
+            }}
+            className="bg-purple-600 p-2 rounded-lg text-white hover:bg-purple-500"
+          >
+            🔄
+          </button>
         </div>
 
         {!showResult ? (
@@ -389,7 +457,7 @@ const TiSveloUnSegretoApp = () => {
 
             <button
               onClick={() => {
-                if (currentQuiz < quizzes.length - 1) {
+                if (currentQuiz < quizzesArray.length - 1) {
                   setCurrentQuiz(currentQuiz + 1);
                   setSelectedAnswer('');
                   setShowResult(false);
@@ -403,7 +471,7 @@ const TiSveloUnSegretoApp = () => {
               }}
               className="w-full bg-white text-teal-600 p-4 rounded-lg font-bold text-lg"
             >
-              {currentQuiz < quizzes.length - 1 ? 'Prossimo Test' : 'Sono Illuminato! ✨'}
+              {currentQuiz < quizzesArray.length - 1 ? 'Prossimo Test' : 'Sono Illuminato! ✨'}
             </button>
           </div>
         )}
