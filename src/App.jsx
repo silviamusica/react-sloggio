@@ -156,35 +156,35 @@ const TiSveloUnSegretoApp = () => {
   };
 
   const renderHome = () => (
-    <div className="min-h-screen bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-cyan-800 text-white">
       {/* Header con Bart */}
       <div className="p-6 text-center">
         <div className="text-8xl mb-4">😈</div>
         <h1 className="text-4xl font-bold mb-2">Ti Svelo Un Segreto</h1>
-        <p className="text-xl text-yellow-100">"Piuttosto che" NON significa "oppure"</p>
-        <div className="bg-black/20 backdrop-blur-lg rounded-xl p-4 mt-4">
-          <p className="text-lg">📊 Anime salvate: <span className="font-bold text-green-300">{savedSouls}</span></p>
-          <p className="text-sm text-yellow-200">Bart ha scritto {bartLines * 100} righe finora</p>
+        <p className="text-xl text-cyan-200">"Piuttosto che" NON significa "oppure"</p>
+        <div className="bg-black/30 backdrop-blur-lg rounded-xl p-4 mt-4">
+          <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
+          <p className="text-sm text-blue-200">Bart ha scritto {bartLines * 100} righe finora</p>
         </div>
       </div>
 
       {/* Sezione Bart alla lavagna */}
-      <div className="mx-6 mb-6 bg-green-800 rounded-xl p-4 border-4 border-yellow-400">
+      <div className="mx-6 mb-6 bg-slate-800 rounded-xl p-4 border-4 border-cyan-400">
         <div className="flex items-center mb-3">
           <div className="text-3xl mr-3">👦</div>
           <h3 className="text-xl font-bold">Bart scrive alla lavagna:</h3>
         </div>
-        <div className="bg-green-900 p-4 rounded-lg font-mono text-yellow-300 text-xs leading-tight max-h-64 overflow-y-auto">
+        <div className="bg-slate-900 p-4 rounded-lg font-mono text-cyan-300 text-xs leading-tight max-h-64 overflow-y-auto">
           {Array.from({length: 100}, (_, i) => (
             <p key={i} className="mb-1">
               {i + 1}. Usare "piuttosto che" con valore disgiuntivo non mi farà sembrare più intelligente.
             </p>
           ))}
-          <p className="text-yellow-400 mt-3 font-bold">...e altre 900 volte per completare le 1000! 📝</p>
+          <p className="text-cyan-400 mt-3 font-bold">...e altre 900 volte per completare le 1000! 📝</p>
         </div>
         <button 
           onClick={() => setCurrentScreen('bartGenerator')}
-          className="mt-3 bg-yellow-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-yellow-400"
+          className="mt-3 bg-cyan-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-cyan-400"
         >
           📝 Genera il tuo Bart personalizzato!
         </button>
@@ -194,36 +194,36 @@ const TiSveloUnSegretoApp = () => {
       <div className="px-6 space-y-4 pb-8">
         <button
           onClick={() => setCurrentScreen('examples')}
-          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+          className="w-full bg-gradient-to-r from-indigo-700 to-blue-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
         >
           <div className="text-3xl">🤦‍♂️</div>
           <div className="text-left">
             <h3 className="font-bold text-lg">Orrori Grammaticali</h3>
-            <p className="text-purple-200">10 esempi di "piuttosto che" selvaggio</p>
+            <p className="text-indigo-200">10 esempi di "piuttosto che" selvaggio</p>
           </div>
-          <AlertTriangle className="ml-auto text-yellow-300" />
+          <AlertTriangle className="ml-auto text-cyan-300" />
         </button>
 
         <button
           onClick={() => setCurrentScreen('quiz')}
-          className="w-full bg-gradient-to-r from-green-600 to-teal-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+          className="w-full bg-gradient-to-r from-slate-700 to-slate-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
         >
           <div className="text-3xl">🧠</div>
           <div className="text-left">
             <h3 className="font-bold text-lg">Test Anti-Virus</h3>
-            <p className="text-green-200">Sei immune al "piuttosto che" multiplo?</p>
+            <p className="text-slate-200">Sei immune al "piuttosto che" multiplo?</p>
           </div>
           <Coffee className="ml-auto" />
         </button>
 
         <button
           onClick={() => setCurrentScreen('about')}
-          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+          className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
         >
           <div className="text-3xl">🤫</div>
           <div className="text-left">
             <h3 className="font-bold text-lg">Il Grande Segreto</h3>
-            <p className="text-indigo-200">Scopri la verità sul "piuttosto che"</p>
+            <p className="text-blue-200">Scopri la verità sul "piuttosto che"</p>
           </div>
           <BookOpen className="ml-auto" />
         </button>
@@ -235,7 +235,7 @@ const TiSveloUnSegretoApp = () => {
     const example = wrongExamples[currentExample];
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-600 text-white p-6">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-800 text-white p-6">
         <div className="flex justify-between items-center mb-6">
           <button 
             onClick={() => setCurrentScreen('home')}
@@ -306,7 +306,7 @@ const TiSveloUnSegretoApp = () => {
                   setCurrentExample(0);
                 }
               }}
-              className="flex-1 bg-yellow-500 text-black p-3 rounded-lg font-bold"
+              className="flex-1 bg-cyan-500 text-black p-3 rounded-lg font-bold"
             >
               {currentExample < wrongExamples.length - 1 ? 'Prossimo Orrore →' : 'Ho Capito! 🎯'}
             </button>
@@ -320,7 +320,7 @@ const TiSveloUnSegretoApp = () => {
     const quiz = quizzes[currentQuiz];
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-600 to-teal-600 text-white p-6">
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-blue-900 to-cyan-800 text-white p-6">
         <div className="flex justify-between items-center mb-6">
           <button 
             onClick={() => setCurrentScreen('home')}
@@ -361,7 +361,7 @@ const TiSveloUnSegretoApp = () => {
             <button
               onClick={() => setShowResult(true)}
               disabled={selectedAnswer === ''}
-              className="w-full bg-yellow-500 text-black p-4 rounded-lg font-bold text-lg disabled:opacity-50"
+              className="w-full bg-cyan-500 text-black p-4 rounded-lg font-bold text-lg disabled:opacity-50"
             >
               Rivela la Verità! 🕵️
             </button>
@@ -413,7 +413,7 @@ const TiSveloUnSegretoApp = () => {
 
   const renderBartGenerator = () => {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-700 to-blue-700 text-white p-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-900 via-slate-800 to-cyan-900 text-white p-6">
         <div className="flex justify-between items-center mb-6">
           <button 
             onClick={() => setCurrentScreen('home')}
@@ -450,7 +450,7 @@ const TiSveloUnSegretoApp = () => {
               <button
                 onClick={generateBart}
                 disabled={!customText.trim()}
-                className="w-full bg-yellow-500 text-black p-3 rounded-lg font-bold disabled:opacity-50"
+                className="w-full bg-cyan-500 text-black p-3 rounded-lg font-bold disabled:opacity-50"
               >
                 🎯 Genera Bart alla Lavagna!
               </button>
@@ -458,7 +458,7 @@ const TiSveloUnSegretoApp = () => {
           </div>
 
           {generatedBart && (
-            <div className="bg-green-800 rounded-xl p-4 border-4 border-yellow-400">
+            <div className="bg-slate-800 rounded-xl p-4 border-4 border-cyan-400">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center">
                   <div className="text-3xl mr-3">👦</div>
@@ -469,12 +469,12 @@ const TiSveloUnSegretoApp = () => {
                     navigator.clipboard.writeText(generatedBart);
                     alert('Copiato! Ora puoi mandarlo ai tuoi amici! 📱');
                   }}
-                  className="bg-yellow-500 text-black px-3 py-1 rounded text-sm font-bold"
+                  className="bg-cyan-500 text-black px-3 py-1 rounded text-sm font-bold"
                 >
                   📋 Copia
                 </button>
               </div>
-              <div className="bg-green-900 p-4 rounded-lg font-mono text-yellow-300 text-sm leading-tight max-h-48 overflow-y-auto">
+              <div className="bg-slate-900 p-4 rounded-lg font-mono text-cyan-300 text-sm leading-tight max-h-48 overflow-y-auto">
                 <pre className="whitespace-pre-wrap">{generatedBart}</pre>
               </div>
             </div>
@@ -494,7 +494,7 @@ const TiSveloUnSegretoApp = () => {
   };
 
   const renderAbout = () => (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 to-purple-600 text-white p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-800 to-cyan-700 text-white p-6">
       <div className="flex justify-between items-center mb-6">
         <button 
           onClick={() => setCurrentScreen('home')}
