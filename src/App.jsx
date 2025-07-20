@@ -31,18 +31,28 @@ const TiSveloUnSegretoApp = () => {
     "Vuoi sembrare colto? Meglio tacere che dire 'piuttosto che'.",
     "'Piuttosto che' non ti salva dal ridicolo.",
     "Con 'piuttosto che' sbagliato, sembri solo incerto.",
-    "'Oppure' funziona, 'piuttosto che'… boh.",
+    "'Oppure' funziona, 'piuttosto che'… NO!.",
     "'Piuttosto che' usato male: il modo più veloce per perdere punti.",
     "Ma oppure vi fa così schifo?"
   ];
 
-  // Funzione per ottenere una frase ironica random
+  // Funzione per ottenere una frase ironica random (evita ripetizioni)
   const getRandomIronicPhrase = () => {
-    return ironicPhrases[Math.floor(Math.random() * ironicPhrases.length)];
+    let newPhrase;
+    let attempts = 0;
+    do {
+      const randomIndex = Math.floor(Math.random() * ironicPhrases.length);
+      newPhrase = ironicPhrases[randomIndex];
+      attempts++;
+    } while (newPhrase === currentBartPhrase && attempts < 10 && ironicPhrases.length > 1);
+    
+    console.log('Nuova frase di Bart:', newPhrase);
+    return newPhrase;
   };
 
   const changeBartPhrase = () => {
-    setCurrentBartPhrase(getRandomIronicPhrase());
+    const newPhrase = getRandomIronicPhrase();
+    setCurrentBartPhrase(newPhrase);
   };
 
   const shareBartPhrase = () => {
@@ -91,6 +101,21 @@ const TiSveloUnSegretoApp = () => {
     setShuffledQuizzes(shuffleArray(quizzes));
     setCurrentBartPhrase(getRandomIronicPhrase());
   }, []);
+
+  // Cambia la frase di Bart ogni volta che cambi esempio nella sezione "Orrori Grammaticali"
+  useEffect(() => {
+    if (currentScreen === 'examples') {
+      setCurrentBartPhrase(getRandomIronicPhrase());
+    }
+  }, [currentExample, currentScreen]);
+
+  // Cambia la frase di Bart quando cambia l'esempio
+  useEffect(() => {
+    if (currentScreen === 'examples') {
+      console.log('Esempio cambiato, aggiorno frase Bart');
+      setCurrentBartPhrase(getRandomIronicPhrase());
+    }
+  }, [currentExample]);
 
   // Incremento automatico anime salvate
   useEffect(() => {
@@ -269,9 +294,8 @@ const TiSveloUnSegretoApp = () => {
       <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto text-white py-6 px-4">
         {/* Header */}
         <div className="p-6 text-center">
-          <h1 className="text-4xl font-bold mb-2">🔥 NUOVO! Piuttosto che? 😨</h1>
+          <h1 className="text-4xl font-bold mb-2">🔥 Piuttosto che? 😨</h1>
           <p className="text-xl text-cyan-200">"Piuttosto che" NON significa "oppure"</p>
-          <p className="text-sm text-cyan-300 opacity-75">🚀 v2.1 - Deploy Test Live!</p>
           <div className="bg-black/30 backdrop-blur-lg rounded-xl p-4 mt-4">
             <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
             <p className="text-xs text-cyan-400 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
@@ -281,7 +305,13 @@ const TiSveloUnSegretoApp = () => {
         {/* Sezione Bart alla lavagna */}
         <div className="mx-6 mb-6">
           <button
-            onClick={() => setShowBartSection(!showBartSection)}
+            onClick={() => {
+              setShowBartSection(!showBartSection);
+              // Forza l'aggiornamento della frase quando apri/chiudi la sezione
+              if (!showBartSection) {
+                setCurrentBartPhrase(getRandomIronicPhrase());
+              }
+            }}
             className="w-full bg-slate-800 rounded-xl p-4 border-4 border-cyan-400 hover:bg-slate-700 transition-colors"
           >
             <div className="flex items-center justify-between">
@@ -336,6 +366,7 @@ const TiSveloUnSegretoApp = () => {
             onClick={() => {
               reshuffleContent();
               setCurrentScreen('examples');
+              setCurrentBartPhrase(getRandomIronicPhrase()); // Assicura che la frase cambi sempre
             }}
             className="w-full bg-gradient-to-r from-indigo-700 to-blue-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
           >
@@ -373,6 +404,15 @@ const TiSveloUnSegretoApp = () => {
             </div>
             <BookOpen className="ml-auto" />
           </button>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center py-4 px-6">
+          <p className="text-lg" style={{ fontFamily: 'Bodoni, serif' }}>
+            <span className="text-white">sognando</span>
+            <span className="text-red-500 italic">il</span>
+            <span className="text-white font-bold">piano</span>
+          </p>
         </div>
       </div>
     </div>
@@ -715,6 +755,20 @@ const TiSveloUnSegretoApp = () => {
             <h4 className="text-lg font-bold mb-3">🎯 Missione dell'app:</h4>
             <p>Salvare il "piuttosto che" dall'abuso e restituirgli la dignità grammaticale che merita!</p>
             <p className="mt-2 text-sm text-slate-300">Con ironia, sarcasmo e tanto amore per l'italiano corretto ❤️</p>
+            <div className="mt-4 space-y-2">
+              <p className="text-sm text-slate-200"><strong>Finta eleganza:</strong> molti lo usano per sembrare più "raffinati", ma l'effetto è opposto.</p>
+              <p className="text-sm text-slate-200">"Piuttosto che" non eleva il discorso. Lo seppellisce.</p>
+            </div>
+          </div>
+
+          <div className="bg-purple-600/20 backdrop-blur-lg rounded-2xl p-6 text-center">
+            <button
+              onClick={() => window.open('https://youtu.be/eo5KBhutwxU?si=038JlL7P1BRNPbPM&t=51', '_blank')}
+              className="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-lg font-bold transition-colors flex items-center mx-auto space-x-2"
+            >
+              <span>▶️</span>
+              <span>Guarda il video</span>
+            </button>
           </div>
         </div>
       </div>
