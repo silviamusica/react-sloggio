@@ -258,12 +258,12 @@ const TiSveloUnSegretoApp = () => {
 
   const renderHome = () => (
     <div
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-cyan-800 flex items-center justify-center"
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-cyan-800"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="w-full max-w-xl mx-auto text-white">
+      <div className="w-full max-w-xl mx-auto text-white py-6">
         {/* Header con Bart */}
         <div className="p-6 text-center">
           <div className="text-8xl mb-4">😈</div>
