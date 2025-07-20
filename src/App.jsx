@@ -408,11 +408,9 @@ const TiSveloUnSegretoApp = () => {
 
         {/* Footer */}
         <div className="text-center py-4 px-6">
-          <p className="text-lg" style={{ fontFamily: 'Bodoni, serif' }}>
-            <span className="text-white">sognando</span>
-            <span className="text-red-500 italic">il</span>
-            <span className="text-white font-bold">piano</span>
-          </p>
+          <a href="https://www.trediqui.it/" target="_blank" rel="noopener noreferrer">
+            <img src="/src/assets/logo-tredi.svg" alt="Logo Tre di qui" style={{ display: 'inline', height: '56px', transform: 'translateX(-12px)' }} />
+          </a>
         </div>
       </div>
     </div>
