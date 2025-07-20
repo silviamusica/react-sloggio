@@ -325,6 +325,7 @@ const TiSveloUnSegretoApp = () => {
 
           {showBartSection && (
             <div className="bg-slate-800 rounded-b-xl p-4 border-l-4 border-r-4 border-b-4 border-cyan-400 border-t-0">
+              {/* Frase di Bart */}
               <div className="bg-black/20 rounded-lg p-4 mb-4 text-center">
                 <p className="text-cyan-200 italic text-lg">"{currentBartPhrase}"</p>
               </div>
@@ -342,7 +343,7 @@ const TiSveloUnSegretoApp = () => {
                   <Share2 size={20} />
                 </button>
               </div>
-              <div className="bg-slate-900 p-4 rounded-lg font-mono text-slate-300 text-xs leading-tight max-h-48 overflow-y-auto">
+              <div className="bg-slate-900 p-4 rounded-lg font-mono text-slate-300 text-xs leading-tight max-h-48 overflow-y-auto mb-4">
                 {Array.from({ length: 50 }, (_, i) => (
                   <p key={i} className="mb-1">
                     {i + 1}. Usare piuttosto che al posto di oppure non mi farà sembrare intelligente.
@@ -352,7 +353,7 @@ const TiSveloUnSegretoApp = () => {
               </div>
               <button
                 onClick={() => setCurrentScreen('bartGenerator')}
-                className="mt-3 w-full bg-yellow-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-yellow-400"
+                className="w-full bg-yellow-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-yellow-400 mb-4"
               >
                 📝 Genera il tuo Bart personalizzato!
               </button>
@@ -700,6 +701,15 @@ const TiSveloUnSegretoApp = () => {
                 "Non userò più 'piuttosto che' invece di 'oppure'"<br/>
                 "Non userò più 'piuttosto che' come jolly universale"
               </p>
+            </div>
+
+            {/* Immagine di Bart alla lavagna - a grandezza piena in basso */}
+            <div className="w-full">
+              <img 
+                src="/bart-lavagna.png" 
+                alt="Bart Simpson alla lavagna" 
+                className="w-full h-auto rounded-lg"
+              />
             </div>
           </div>
         </div>
