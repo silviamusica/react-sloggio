@@ -409,7 +409,12 @@ const TiSveloUnSegretoApp = () => {
         {/* Footer */}
         <div className="text-center py-4 px-6">
           <a href="https://www.trediqui.it/" target="_blank" rel="noopener noreferrer">
-            <img src="/logo-tredi.gif" alt="Logo Tre di qui" style={{ display: 'inline', height: '56px', transform: 'translateX(-12px)' }} />
+            <img 
+              src="/logo-tredi.gif" 
+              alt="Logo Tre di qui" 
+              className="mx-auto block" 
+              style={{ maxWidth: '160px', width: '80%', height: 'auto', minWidth: '80px' }} 
+            />
           </a>
         </div>
       </div>
