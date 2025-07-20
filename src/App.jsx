@@ -4,7 +4,10 @@ import { BookOpen, Coffee, AlertTriangle, Share2 } from 'lucide-react';
 const TiSveloUnSegretoApp = () => {
   const [currentScreen, setCurrentScreen] = useState('home');
   const [currentExample, setCurrentExample] = useState(0);
-  const [savedSouls, setSavedSouls] = useState(17);
+  const [savedSouls, setSavedSouls] = useState(() => {
+    // Genera un numero casuale tra 15 e 150 all'avvio
+    return Math.floor(Math.random() * 136) + 15;
+  });
   const [bartLines, setBartLines] = useState(1);
   const [currentQuiz, setCurrentQuiz] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -87,6 +90,17 @@ const TiSveloUnSegretoApp = () => {
     setShuffledExamples(shuffleArray(wrongExamples));
     setShuffledQuizzes(shuffleArray(quizzes));
     setCurrentBartPhrase(getRandomIronicPhrase());
+  }, []);
+
+  // Incremento automatico anime salvate
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Incrementa di 1-4 anime salvate ogni minuto
+      const increment = Math.floor(Math.random() * 4) + 1;
+      setSavedSouls(prev => prev + increment);
+    }, 60000); // 60 secondi = 1 minuto
+
+    return () => clearInterval(interval);
   }, []);
 
   // Funzione per rimescolare esempi e quiz
@@ -252,14 +266,13 @@ const TiSveloUnSegretoApp = () => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="w-full max-w-xl mx-auto text-white py-6 px-4">
+      <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto text-white py-6 px-4">
         {/* Header */}
         <div className="p-6 text-center">
-          <h1 className="text-4xl font-bold mb-2">Piuttosto che?😨</h1>
+          <h1 className="text-4xl font-bold mb-2">Piuttosto che? 😨</h1>
           <p className="text-xl text-cyan-200">"Piuttosto che" NON significa "oppure"</p>
           <div className="bg-black/30 backdrop-blur-lg rounded-xl p-4 mt-4">
             <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
-            <p className="text-sm text-blue-200">Bart ha scritto {bartLines * 100} righe finora</p>
             <p className="text-xs text-cyan-400 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
           </div>
         </div>
@@ -376,13 +389,13 @@ const TiSveloUnSegretoApp = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="w-full max-w-xl mx-auto p-6">
+        <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto p-6">
           <div className="flex justify-between items-center mb-6">
             <button 
               onClick={() => setCurrentScreen('home')}
               className="bg-white/20 p-2 rounded-lg"
             >
-              ← Indietro
+              Menu
             </button>
             <div className="text-center">
               <p className="text-sm">Orrore {currentExample + 1}/{examplesArray.length}</p>
@@ -469,13 +482,13 @@ const TiSveloUnSegretoApp = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="w-full max-w-xl mx-auto p-6">
+        <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto p-6">
           <div className="flex justify-between items-center mb-6">
             <button 
               onClick={() => setCurrentScreen('home')}
               className="bg-white/20 p-2 rounded-lg"
             >
-              ← Indietro
+              Menu
             </button>
             <div className="text-center">
               <p className="text-sm">Test {currentQuiz + 1}/{quizzesArray.length}</p>
@@ -566,15 +579,15 @@ const TiSveloUnSegretoApp = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="w-full max-w-xl mx-auto p-6">
+        <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto p-6">
           <div className="flex justify-between items-center mb-6">
             <button 
               onClick={() => setCurrentScreen('home')}
               className="bg-white/20 p-2 rounded-lg"
             >
-              ← Indietro
+              Menu
             </button>
-            <h2 className="text-xl font-bold">Bart Generator</h2>
+            <h2 className="text-xl font-bold">Bart generator</h2>
             <div className="text-2xl">👦</div>
           </div>
 
@@ -623,7 +636,7 @@ const TiSveloUnSegretoApp = () => {
                     }}
                     className="bg-slate-600 text-white px-3 py-1 rounded text-sm font-bold"
                   >
-                    📋 Copia
+                    📋 Copia e condividi con i bisognosi
                   </button>
                 </div>
                 <div className="bg-slate-900 p-4 rounded-lg font-mono text-slate-300 text-sm leading-tight max-h-48 overflow-y-auto">
@@ -653,21 +666,20 @@ const TiSveloUnSegretoApp = () => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="w-full max-w-xl mx-auto p-6">
+      <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto p-6">
         <div className="flex justify-between items-center mb-6">
           <button 
             onClick={() => setCurrentScreen('home')}
             className="bg-white/20 p-2 rounded-lg"
           >
-            ← Indietro
+            Menu
           </button>
-          <h2 className="text-xl font-bold">Il Grande Segreto</h2>
+          <h2 className="text-xl font-bold">La verità rivelata</h2>
           <div className="text-2xl">🤫</div>
         </div>
 
         <div className="space-y-6">
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
-            <h3 className="text-2xl font-bold mb-4">La Verità Rivelata</h3>
             <div className="text-left space-y-4">
               <div className="bg-red-500/20 p-4 rounded-lg">
                 <p className="font-bold text-red-300">❌ FALSO:</p>
