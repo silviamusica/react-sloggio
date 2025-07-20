@@ -370,86 +370,88 @@ const TiSveloUnSegretoApp = () => {
     
     return (
       <div 
-        className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-800 text-white p-6"
+        className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-800 text-white"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="flex justify-between items-center mb-6">
-          <button 
-            onClick={() => setCurrentScreen('home')}
-            className="bg-white/20 p-2 rounded-lg"
-          >
-            ← Indietro
-          </button>
-          <div className="text-center">
-            <p className="text-sm">Orrore {currentExample + 1}/{examplesArray.length}</p>
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
-            <div className="text-center mb-4">
-              <div className="text-6xl mb-2">😱</div>
-              <h2 className="text-xl font-bold text-red-300">ERRORE RILEVATO!</h2>
-              <p className="text-sm text-red-200 italic mt-2">🎪 {currentIronicPhrases.examples}</p>
-            </div>
-            
-            <div className="bg-red-500/30 p-4 rounded-lg mb-4">
-              <p className="text-lg font-bold">❌ SBAGLIATO:</p>
-              <p className="text-red-200 italic">"{example.wrong}"</p>
-            </div>
-
-            <div className="bg-green-500/30 p-4 rounded-lg mb-4">
-              <p className="text-lg font-bold">✅ CORRETTO:</p>
-              <p className="text-green-200 italic">"{example.correct}"</p>
-            </div>
-
-            <div className="bg-blue-500/30 p-4 rounded-lg">
-              <p className="text-sm font-bold mb-2">💡 PERCHÉ:</p>
-              <p className="text-blue-200">{example.explanation}</p>
-            </div>
-          </div>
-
-          {/* Bart Section */}
-          <div className="bg-green-800 rounded-xl p-4 border-2 border-yellow-400">
-            <div className="flex items-center mb-2">
-              <div className="text-2xl mr-2">👦</div>
-              <p className="text-yellow-300 font-bold">Bart deve scrivere:</p>
-            </div>
-            <div className="bg-green-900 p-3 rounded font-mono text-yellow-200 text-sm">
-              {example.bartText}
-            </div>
-            <p className="text-xs text-yellow-400 mt-2">...100 volte alla lavagna (come ai bei tempi!) 📝</p>
-          </div>
-
-          <div className="flex space-x-3">
-            <button
-              onClick={() => {
-                if (currentExample > 0) {
-                  setCurrentExample(currentExample - 1);
-                }
-              }}
-              disabled={currentExample === 0}
-              className="flex-1 bg-gray-600 p-3 rounded-lg font-bold disabled:opacity-50"
+        <div className="w-full max-w-xl mx-auto p-6">
+          <div className="flex justify-between items-center mb-6">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="bg-white/20 p-2 rounded-lg"
             >
-              ← Precedente
+              ← Indietro
             </button>
-            
-            <button
-              onClick={() => {
-                if (currentExample < examplesArray.length - 1) {
-                  setCurrentExample(currentExample + 1);
-                } else {
-                  setCurrentScreen('home');
-                  setSavedSouls(savedSouls + 1);
-                  setCurrentExample(0);
-                }
-              }}
-              className="flex-1 bg-cyan-500 text-black p-3 rounded-lg font-bold"
-            >
-              {currentExample < examplesArray.length - 1 ? 'Prossimo Orrore →' : 'Ho Capito! 🎯'}
-            </button>
+            <div className="text-center">
+              <p className="text-sm">Orrore {currentExample + 1}/{examplesArray.length}</p>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+              <div className="text-center mb-4">
+                <div className="text-6xl mb-2">😱</div>
+                <h2 className="text-xl font-bold text-red-300">ERRORE RILEVATO!</h2>
+                <p className="text-sm text-red-200 italic mt-2">🎪 {currentIronicPhrases.examples}</p>
+              </div>
+              
+              <div className="bg-red-500/30 p-4 rounded-lg mb-4">
+                <p className="text-lg font-bold">❌ SBAGLIATO:</p>
+                <p className="text-red-200 italic">"{example.wrong}"</p>
+              </div>
+
+              <div className="bg-green-500/30 p-4 rounded-lg mb-4">
+                <p className="text-lg font-bold">✅ CORRETTO:</p>
+                <p className="text-green-200 italic">"{example.correct}"</p>
+              </div>
+
+              <div className="bg-blue-500/30 p-4 rounded-lg">
+                <p className="text-sm font-bold mb-2">💡 PERCHÉ:</p>
+                <p className="text-blue-200">{example.explanation}</p>
+              </div>
+            </div>
+
+            {/* Bart Section */}
+            <div className="bg-green-800 rounded-xl p-4 border-2 border-yellow-400">
+              <div className="flex items-center mb-2">
+                <div className="text-2xl mr-2">👦</div>
+                <p className="text-yellow-300 font-bold">Bart deve scrivere:</p>
+              </div>
+              <div className="bg-green-900 p-3 rounded font-mono text-yellow-200 text-sm">
+                {example.bartText}
+              </div>
+              <p className="text-xs text-yellow-400 mt-2">...100 volte alla lavagna (come ai bei tempi!) 📝</p>
+            </div>
+
+            <div className="flex space-x-3">
+              <button
+                onClick={() => {
+                  if (currentExample > 0) {
+                    setCurrentExample(currentExample - 1);
+                  }
+                }}
+                disabled={currentExample === 0}
+                className="flex-1 bg-gray-600 p-3 rounded-lg font-bold disabled:opacity-50"
+              >
+                ← Precedente
+              </button>
+              
+              <button
+                onClick={() => {
+                  if (currentExample < examplesArray.length - 1) {
+                    setCurrentExample(currentExample + 1);
+                  } else {
+                    setCurrentScreen('home');
+                    setSavedSouls(savedSouls + 1);
+                    setCurrentExample(0);
+                  }
+                }}
+                className="flex-1 bg-cyan-500 text-black p-3 rounded-lg font-bold"
+              >
+                {currentExample < examplesArray.length - 1 ? 'Prossimo Orrore →' : 'Ho Capito! 🎯'}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -463,98 +465,100 @@ const TiSveloUnSegretoApp = () => {
     
     return (
       <div 
-        className="min-h-screen bg-gradient-to-br from-slate-800 via-blue-900 to-cyan-800 text-white p-6"
+        className="min-h-screen bg-gradient-to-br from-slate-800 via-blue-900 to-cyan-800 text-white"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="flex justify-between items-center mb-6">
-          <button 
-            onClick={() => setCurrentScreen('home')}
-            className="bg-white/20 p-2 rounded-lg"
-          >
-            ← Indietro
-          </button>
-          <div className="text-center">
-            <p className="text-sm">Test {currentQuiz + 1}/{quizzesArray.length}</p>
+        <div className="w-full max-w-xl mx-auto p-6">
+          <div className="flex justify-between items-center mb-6">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="bg-white/20 p-2 rounded-lg"
+            >
+              ← Indietro
+            </button>
+            <div className="text-center">
+              <p className="text-sm">Test {currentQuiz + 1}/{quizzesArray.length}</p>
+            </div>
           </div>
+
+          {!showResult ? (
+            <div className="space-y-6">
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+                <div className="text-center mb-4">
+                  <div className="text-5xl mb-2">🤔</div>
+                  <h2 className="text-xl font-bold">{quiz.question}</h2>
+                  <p className="text-sm text-blue-200 italic mt-2">🎯 {currentIronicPhrases.quiz}</p>
+                </div>
+                
+                <div className="space-y-3 mt-6">
+                  {quiz.options.map((option, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedAnswer(index)}
+                      className={`w-full p-4 rounded-lg text-left transition-colors ${
+                        selectedAnswer === index 
+                          ? 'bg-white text-teal-600 font-bold' 
+                          : 'bg-white/20 hover:bg-white/30'
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowResult(true)}
+                disabled={selectedAnswer === ''}
+                className="w-full bg-cyan-500 text-black p-4 rounded-lg font-bold text-lg disabled:opacity-50"
+              >
+                Rivela la Verità! 🕵️
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
+                {selectedAnswer === quiz.correct ? (
+                  <div>
+                    <div className="text-6xl mb-4">🎉</div>
+                    <h2 className="text-2xl font-bold text-green-300 mb-4">CORRETTO!</h2>
+                    <p className="text-lg mb-4">{quiz.sarcasm}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <div className="text-6xl mb-4">😅</div>
+                    <h2 className="text-2xl font-bold text-yellow-300 mb-4">Oops!</h2>
+                    <p className="text-lg mb-4">Niente panico, anche Dante sbagliava... forse!</p>
+                  </div>
+                )}
+                <div className="bg-blue-500/30 p-4 rounded-lg">
+                  <p><strong>Spiegazione:</strong> {quiz.explanation}</p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => {
+                  if (currentQuiz < quizzesArray.length - 1) {
+                    setCurrentQuiz(currentQuiz + 1);
+                    setSelectedAnswer('');
+                    setShowResult(false);
+                  } else {
+                    setCurrentScreen('home');
+                    setSavedSouls(savedSouls + 2);
+                    setCurrentQuiz(0);
+                    setSelectedAnswer('');
+                    setShowResult(false);
+                  }
+                }}
+                className="w-full bg-white text-teal-600 p-4 rounded-lg font-bold text-lg"
+              >
+                {currentQuiz < quizzesArray.length - 1 ? 'Prossimo Test' : 'Sono Illuminato! ✨'}
+              </button>
+            </div>
+          )}
         </div>
-
-        {!showResult ? (
-          <div className="space-y-6">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
-              <div className="text-center mb-4">
-                <div className="text-5xl mb-2">🤔</div>
-                <h2 className="text-xl font-bold">{quiz.question}</h2>
-                <p className="text-sm text-blue-200 italic mt-2">🎯 {currentIronicPhrases.quiz}</p>
-              </div>
-              
-              <div className="space-y-3 mt-6">
-                {quiz.options.map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedAnswer(index)}
-                    className={`w-full p-4 rounded-lg text-left transition-colors ${
-                      selectedAnswer === index 
-                        ? 'bg-white text-teal-600 font-bold' 
-                        : 'bg-white/20 hover:bg-white/30'
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <button
-              onClick={() => setShowResult(true)}
-              disabled={selectedAnswer === ''}
-              className="w-full bg-cyan-500 text-black p-4 rounded-lg font-bold text-lg disabled:opacity-50"
-            >
-              Rivela la Verità! 🕵️
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
-              {selectedAnswer === quiz.correct ? (
-                <div>
-                  <div className="text-6xl mb-4">🎉</div>
-                  <h2 className="text-2xl font-bold text-green-300 mb-4">CORRETTO!</h2>
-                  <p className="text-lg mb-4">{quiz.sarcasm}</p>
-                </div>
-              ) : (
-                <div>
-                  <div className="text-6xl mb-4">😅</div>
-                  <h2 className="text-2xl font-bold text-yellow-300 mb-4">Oops!</h2>
-                  <p className="text-lg mb-4">Niente panico, anche Dante sbagliava... forse!</p>
-                </div>
-              )}
-              <div className="bg-blue-500/30 p-4 rounded-lg">
-                <p><strong>Spiegazione:</strong> {quiz.explanation}</p>
-              </div>
-            </div>
-
-            <button
-              onClick={() => {
-                if (currentQuiz < quizzesArray.length - 1) {
-                  setCurrentQuiz(currentQuiz + 1);
-                  setSelectedAnswer('');
-                  setShowResult(false);
-                } else {
-                  setCurrentScreen('home');
-                  setSavedSouls(savedSouls + 2);
-                  setCurrentQuiz(0);
-                  setSelectedAnswer('');
-                  setShowResult(false);
-                }
-              }}
-              className="w-full bg-white text-teal-600 p-4 rounded-lg font-bold text-lg"
-            >
-              {currentQuiz < quizzesArray.length - 1 ? 'Prossimo Test' : 'Sono Illuminato! ✨'}
-            </button>
-          </div>
-        )}
       </div>
     );
   };
@@ -562,85 +566,87 @@ const TiSveloUnSegretoApp = () => {
   const renderBartGenerator = () => {
     return (
       <div 
-        className="min-h-screen bg-gradient-to-br from-blue-900 via-slate-800 to-cyan-900 text-white p-6"
+        className="min-h-screen bg-gradient-to-br from-blue-900 via-slate-800 to-cyan-900 text-white"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="flex justify-between items-center mb-6">
-          <button 
-            onClick={() => setCurrentScreen('home')}
-            className="bg-white/20 p-2 rounded-lg"
-          >
-            ← Indietro
-          </button>
-          <h2 className="text-xl font-bold">Bart Generator</h2>
-          <div className="text-2xl">👦</div>
-        </div>
-
-        <div className="space-y-6">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
-            <div className="text-center mb-4">
-              <div className="text-6xl mb-2">✏️</div>
-              <h3 className="text-xl font-bold">Crea il tuo Bart personalizzato!</h3>
-              <p className="text-gray-300">Perfetto da mandare agli amici che abusano del "piuttosto che"</p>
-              <p className="text-sm text-blue-300 italic mt-2">✨ {currentIronicPhrases.bartGenerator}</p>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-bold mb-2">Cosa deve scrivere Bart?</label>
-                <input
-                  type="text"
-                  value={customText}
-                  onChange={(e) => setCustomText(e.target.value)}
-                  placeholder="Usare 'piuttosto che' con valore disgiuntivo non mi farà sembrare più intelligente"
-                  className="w-full p-3 rounded-lg text-gray-800"
-                  maxLength={100}
-                />
-                <p className="text-xs text-gray-400 mt-1">Max 100 caratteri</p>
-              </div>
-
-              <button
-                onClick={generateBart}
-                disabled={!customText.trim()}
-                className="w-full bg-cyan-500 text-black p-3 rounded-lg font-bold disabled:opacity-50"
-              >
-                🎯 Genera Bart alla Lavagna!
-              </button>
-            </div>
+        <div className="w-full max-w-xl mx-auto p-6">
+          <div className="flex justify-between items-center mb-6">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="bg-white/20 p-2 rounded-lg"
+            >
+              ← Indietro
+            </button>
+            <h2 className="text-xl font-bold">Bart Generator</h2>
+            <div className="text-2xl">👦</div>
           </div>
 
-          {generatedBart && (
-            <div className="bg-slate-800 rounded-xl p-4 border-4 border-cyan-400">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center">
-                  <div className="text-3xl mr-3">👦</div>
-                  <h4 className="text-lg font-bold">Il tuo Bart personalizzato:</h4>
+          <div className="space-y-6">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+              <div className="text-center mb-4">
+                <div className="text-6xl mb-2">✏️</div>
+                <h3 className="text-xl font-bold">Crea il tuo Bart personalizzato!</h3>
+                <p className="text-gray-300">Perfetto da mandare agli amici che abusano del "piuttosto che"</p>
+                <p className="text-sm text-blue-300 italic mt-2">✨ {currentIronicPhrases.bartGenerator}</p>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-bold mb-2">Cosa deve scrivere Bart?</label>
+                  <input
+                    type="text"
+                    value={customText}
+                    onChange={(e) => setCustomText(e.target.value)}
+                    placeholder="Usare 'piuttosto che' con valore disgiuntivo non mi farà sembrare più intelligente"
+                    className="w-full p-3 rounded-lg text-gray-800"
+                    maxLength={100}
+                  />
+                  <p className="text-xs text-gray-400 mt-1">Max 100 caratteri</p>
                 </div>
+
                 <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(generatedBart);
-                    alert('Copiato! Ora puoi mandarlo ai tuoi amici! 📱');
-                  }}
-                  className="bg-cyan-500 text-black px-3 py-1 rounded text-sm font-bold"
+                  onClick={generateBart}
+                  disabled={!customText.trim()}
+                  className="w-full bg-cyan-500 text-black p-3 rounded-lg font-bold disabled:opacity-50"
                 >
-                  📋 Copia
+                  🎯 Genera Bart alla Lavagna!
                 </button>
               </div>
-              <div className="bg-slate-900 p-4 rounded-lg font-mono text-cyan-300 text-sm leading-tight max-h-48 overflow-y-auto">
-                <pre className="whitespace-pre-wrap">{generatedBart}</pre>
-              </div>
             </div>
-          )}
 
-          <div className="text-center">
-            <p className="text-sm text-gray-300">💡 Suggerimenti:</p>
-            <p className="text-xs text-gray-400">
-              "Usare 'piuttosto che' con valore disgiuntivo non mi farà sembrare più intelligente"<br/>
-              "Non userò più 'piuttosto che' invece di 'oppure'"<br/>
-              "Non userò più 'piuttosto che' come jolly universale"
-            </p>
+            {generatedBart && (
+              <div className="bg-slate-800 rounded-xl p-4 border-4 border-cyan-400">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center">
+                    <div className="text-3xl mr-3">👦</div>
+                    <h4 className="text-lg font-bold">Il tuo Bart personalizzato:</h4>
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(generatedBart);
+                      alert('Copiato! Ora puoi mandarlo ai tuoi amici! 📱');
+                    }}
+                    className="bg-cyan-500 text-black px-3 py-1 rounded text-sm font-bold"
+                  >
+                    📋 Copia
+                  </button>
+                </div>
+                <div className="bg-slate-900 p-4 rounded-lg font-mono text-cyan-300 text-sm leading-tight max-h-48 overflow-y-auto">
+                  <pre className="whitespace-pre-wrap">{generatedBart}</pre>
+                </div>
+              </div>
+            )}
+
+            <div className="text-center">
+              <p className="text-sm text-gray-300">💡 Suggerimenti:</p>
+              <p className="text-xs text-gray-400">
+                "Usare 'piuttosto che' con valore disgiuntivo non mi farà sembrare più intelligente"<br/>
+                "Non userò più 'piuttosto che' invece di 'oppure'"<br/>
+                "Non userò più 'piuttosto che' come jolly universale"
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -649,61 +655,63 @@ const TiSveloUnSegretoApp = () => {
 
   const renderAbout = () => (
     <div 
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-800 to-cyan-700 text-white p-6"
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-800 to-cyan-700 text-white"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="flex justify-between items-center mb-6">
-        <button 
-          onClick={() => setCurrentScreen('home')}
-          className="bg-white/20 p-2 rounded-lg"
-        >
-          ← Indietro
-        </button>
-        <h2 className="text-xl font-bold">Il Grande Segreto</h2>
-        <div className="text-2xl">🤫</div>
-      </div>
-
-      <div className="space-y-6">
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
-          <div className="text-6xl mb-4">🎭</div>
-          <h3 className="text-2xl font-bold mb-4">La Verità Rivelata</h3>
-          <p className="text-sm text-cyan-200 italic mb-4">🕵️ {currentIronicPhrases.about}</p>
-          <div className="text-left space-y-4">
-            <div className="bg-red-500/20 p-4 rounded-lg">
-              <p className="font-bold text-red-300">❌ FALSO:</p>
-              <p>"Piuttosto che" = "oppure"</p>
-            </div>
-            <div className="bg-green-500/20 p-4 rounded-lg">
-              <p className="font-bold text-green-300">✅ VERO:</p>
-              <p>"Piuttosto che" = "anziché" (preferenza netta)</p>
-            </div>
-          </div>
+      <div className="w-full max-w-xl mx-auto p-6">
+        <div className="flex justify-between items-center mb-6">
+          <button 
+            onClick={() => setCurrentScreen('home')}
+            className="bg-white/20 p-2 rounded-lg"
+          >
+            ← Indietro
+          </button>
+          <h2 className="text-xl font-bold">Il Grande Segreto</h2>
+          <div className="text-2xl">🤫</div>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
-          <h4 className="text-lg font-bold mb-3">📚 Esempi corretti:</h4>
-          <div className="space-y-3 text-sm">
-            <div className="bg-green-500/20 p-3 rounded">
-              <p className="font-bold">✅ "Preferisco studiare piuttosto che guardare TV"</p>
-              <p className="text-green-300">→ Esprimi una preferenza chiara</p>
-            </div>
-            <div className="bg-green-500/20 p-3 rounded">
-              <p className="font-bold">✅ "Meglio camminare piuttosto che prendere l'auto"</p>
-              <p className="text-green-300">→ Indichi cosa preferisci</p>
-            </div>
-            <div className="bg-red-500/20 p-3 rounded">
-              <p className="font-bold">❌ "Vuoi pasta piuttosto che pizza?"</p>
-              <p className="text-red-300">→ Qui serve "o", non "piuttosto che"!</p>
+        <div className="space-y-6">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
+            <div className="text-6xl mb-4">🎭</div>
+            <h3 className="text-2xl font-bold mb-4">La Verità Rivelata</h3>
+            <p className="text-sm text-cyan-200 italic mb-4">🕵️ {currentIronicPhrases.about}</p>
+            <div className="text-left space-y-4">
+              <div className="bg-red-500/20 p-4 rounded-lg">
+                <p className="font-bold text-red-300">❌ FALSO:</p>
+                <p>"Piuttosto che" = "oppure"</p>
+              </div>
+              <div className="bg-green-500/20 p-4 rounded-lg">
+                <p className="font-bold text-green-300">✅ VERO:</p>
+                <p>"Piuttosto che" = "anziché" (preferenza netta)</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="bg-yellow-500/20 backdrop-blur-lg rounded-2xl p-6">
-          <h4 className="text-lg font-bold mb-3">🎯 Missione dell'app:</h4>
-          <p>Salvare il "piuttosto che" dall'abuso e restituirgli la dignità grammaticale che merita!</p>
-          <p className="mt-2 text-sm text-yellow-300">Con ironia, sarcasmo e tanto amore per l'italiano corretto ❤️</p>
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+            <h4 className="text-lg font-bold mb-3">📚 Esempi corretti:</h4>
+            <div className="space-y-3 text-sm">
+              <div className="bg-green-500/20 p-3 rounded">
+                <p className="font-bold">✅ "Preferisco studiare piuttosto che guardare TV"</p>
+                <p className="text-green-300">→ Esprimi una preferenza chiara</p>
+              </div>
+              <div className="bg-green-500/20 p-3 rounded">
+                <p className="font-bold">✅ "Meglio camminare piuttosto che prendere l'auto"</p>
+                <p className="text-green-300">→ Indichi cosa preferisci</p>
+              </div>
+              <div className="bg-red-500/20 p-3 rounded">
+                <p className="font-bold">❌ "Vuoi pasta piuttosto che pizza?"</p>
+                <p className="text-red-300">→ Qui serve "o", non "piuttosto che"!</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-yellow-500/20 backdrop-blur-lg rounded-2xl p-6">
+            <h4 className="text-lg font-bold mb-3">🎯 Missione dell'app:</h4>
+            <p>Salvare il "piuttosto che" dall'abuso e restituirgli la dignità grammaticale che merita!</p>
+            <p className="mt-2 text-sm text-yellow-300">Con ironia, sarcasmo e tanto amore per l'italiano corretto ❤️</p>
+          </div>
         </div>
       </div>
     </div>
