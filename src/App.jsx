@@ -263,7 +263,7 @@ const TiSveloUnSegretoApp = () => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="w-full max-w-xl mx-auto text-white py-6">
+      <div className="w-full max-w-xl mx-auto text-white py-6 px-4">
         {/* Header con Bart */}
         <div className="p-6 text-center">
           <div className="text-8xl mb-4">😈</div>
