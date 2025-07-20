@@ -17,6 +17,14 @@ const TiSveloUnSegretoApp = () => {
   const [showBartSection, setShowBartSection] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [currentIronicPhrases, setCurrentIronicPhrases] = useState({
+    header: '',
+    examples: '',
+    quiz: '',
+    bart: '',
+    bartGenerator: '',
+    about: ''
+  });
 
   // Frasi ironiche random
   const ironicPhrases = [
@@ -36,6 +44,18 @@ const TiSveloUnSegretoApp = () => {
   // Funzione per ottenere una frase ironica random
   const getRandomIronicPhrase = () => {
     return ironicPhrases[Math.floor(Math.random() * ironicPhrases.length)];
+  };
+
+  // Funzione per generare tutte le frasi ironiche fisse
+  const generateIronicPhrases = () => {
+    setCurrentIronicPhrases({
+      header: getRandomIronicPhrase(),
+      examples: getRandomIronicPhrase(),
+      quiz: getRandomIronicPhrase(),
+      bart: getRandomIronicPhrase(),
+      bartGenerator: getRandomIronicPhrase(),
+      about: getRandomIronicPhrase()
+    });
   };
 
   // Gestione swipe per mobile
@@ -77,6 +97,7 @@ const TiSveloUnSegretoApp = () => {
   useEffect(() => {
     setShuffledExamples(shuffleArray(wrongExamples));
     setShuffledQuizzes(shuffleArray(quizzes));
+    generateIronicPhrases();
   }, []);
 
   // Funzione per rimescolare esempi e quiz
@@ -90,6 +111,7 @@ const TiSveloUnSegretoApp = () => {
     setCurrentQuiz(0);
     setSelectedAnswer('');
     setShowResult(false);
+    generateIronicPhrases(); // Rigenera anche le frasi ironiche
   };
 
   // Esempi di "piuttosto che" usato male (con più opzioni)
@@ -235,106 +257,108 @@ const TiSveloUnSegretoApp = () => {
   };
 
   const renderHome = () => (
-    <div 
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-cyan-800 text-white"
+    <div
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-cyan-800 flex items-center justify-center"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      {/* Header con Bart */}
-      <div className="p-6 text-center">
-        <div className="text-8xl mb-4">😈</div>
-        <h1 className="text-4xl font-bold mb-2">Ti Svelo Un Segreto</h1>
-        <p className="text-xl text-cyan-200">"Piuttosto che" NON significa "oppure"</p>
-        <p className="text-sm text-blue-300 mt-2 italic">💡 {getRandomIronicPhrase()}</p>
-        <div className="bg-black/30 backdrop-blur-lg rounded-xl p-4 mt-4">
-          <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
-          <p className="text-sm text-blue-200">Bart ha scritto {bartLines * 100} righe finora</p>
-          <p className="text-xs text-cyan-400 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
+      <div className="w-full max-w-xl mx-auto text-white">
+        {/* Header con Bart */}
+        <div className="p-6 text-center">
+          <div className="text-8xl mb-4">😈</div>
+          <h1 className="text-4xl font-bold mb-2">Ti Svelo Un Segreto</h1>
+          <p className="text-xl text-cyan-200">"Piuttosto che" NON significa "oppure"</p>
+          <p className="text-sm text-blue-300 mt-2 italic">💡 {currentIronicPhrases.header}</p>
+          <div className="bg-black/30 backdrop-blur-lg rounded-xl p-4 mt-4">
+            <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
+            <p className="text-sm text-blue-200">Bart ha scritto {bartLines * 100} righe finora</p>
+            <p className="text-xs text-cyan-400 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
+          </div>
         </div>
-      </div>
 
-      {/* Sezione Bart alla lavagna - Collassabile */}
-      <div className="mx-6 mb-6">
-        <button 
-          onClick={() => setShowBartSection(!showBartSection)}
-          className="w-full bg-slate-800 rounded-xl p-4 border-4 border-cyan-400 hover:bg-slate-700 transition-colors"
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="text-3xl mr-3">👦</div>
-              <h3 className="text-xl font-bold">Bart scrive alla lavagna</h3>
+        {/* Sezione Bart alla lavagna - Collassabile */}
+        <div className="mx-6 mb-6">
+          <button
+            onClick={() => setShowBartSection(!showBartSection)}
+            className="w-full bg-slate-800 rounded-xl p-4 border-4 border-cyan-400 hover:bg-slate-700 transition-colors"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <div className="text-3xl mr-3">👦</div>
+                <h3 className="text-xl font-bold">Bart scrive alla lavagna</h3>
+              </div>
+              <div className="text-2xl">{showBartSection ? '▼' : '▶'}</div>
             </div>
-            <div className="text-2xl">{showBartSection ? '▼' : '▶'}</div>
-          </div>
-          <p className="text-sm text-cyan-300 mt-2">💬 {getRandomIronicPhrase()}</p>
-        </button>
-        
-        {showBartSection && (
-          <div className="bg-slate-800 rounded-b-xl p-4 border-l-4 border-r-4 border-b-4 border-cyan-400 border-t-0">
-            <div className="bg-slate-900 p-4 rounded-lg font-mono text-cyan-300 text-xs leading-tight max-h-48 overflow-y-auto">
-              {Array.from({length: 50}, (_, i) => (
-                <p key={i} className="mb-1">
-                  {i + 1}. Usare "piuttosto che" con valore disgiuntivo non mi farà sembrare più intelligente.
-                </p>
-              ))}
-              <p className="text-cyan-400 mt-3 font-bold">...e altre 950 volte per completare le 1000! 📝</p>
+            <p className="text-sm text-cyan-300 mt-2">💬 {currentIronicPhrases.bart}</p>
+          </button>
+
+          {showBartSection && (
+            <div className="bg-slate-800 rounded-b-xl p-4 border-l-4 border-r-4 border-b-4 border-cyan-400 border-t-0">
+              <div className="bg-slate-900 p-4 rounded-lg font-mono text-cyan-300 text-xs leading-tight max-h-48 overflow-y-auto">
+                {Array.from({ length: 50 }, (_, i) => (
+                  <p key={i} className="mb-1">
+                    {i + 1}. Usare "piuttosto che" con valore disgiuntivo non mi farà sembrare più intelligente.
+                  </p>
+                ))}
+                <p className="text-cyan-400 mt-3 font-bold">...e altre 950 volte per completare le 1000! 📝</p>
+              </div>
+              <button
+                onClick={() => setCurrentScreen('bartGenerator')}
+                className="mt-3 w-full bg-cyan-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-cyan-400"
+              >
+                📝 Genera il tuo Bart personalizzato!
+              </button>
             </div>
-            <button 
-              onClick={() => setCurrentScreen('bartGenerator')}
-              className="mt-3 w-full bg-cyan-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-cyan-400"
-            >
-              📝 Genera il tuo Bart personalizzato!
-            </button>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
 
-      {/* Menu Principale */}
-      <div className="px-6 space-y-4 pb-8">
-        <button
-          onClick={() => {
-            reshuffleContent();
-            setCurrentScreen('examples');
-          }}
-          className="w-full bg-gradient-to-r from-indigo-700 to-blue-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
-        >
-          <div className="text-3xl">🤦‍♂️</div>
-          <div className="text-left">
-            <h3 className="font-bold text-lg">Orrori Grammaticali</h3>
-            <p className="text-indigo-200">Esempi casuali di "piuttosto che" selvaggio</p>
-            <p className="text-xs text-indigo-300 italic">🎭 {getRandomIronicPhrase()}</p>
-          </div>
-          <AlertTriangle className="ml-auto text-cyan-300" />
-        </button>
+        {/* Menu Principale */}
+        <div className="px-6 space-y-4 pb-8">
+          <button
+            onClick={() => {
+              reshuffleContent();
+              setCurrentScreen('examples');
+            }}
+            className="w-full bg-gradient-to-r from-indigo-700 to-blue-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+          >
+            <div className="text-3xl">🤦‍♂️</div>
+            <div className="text-left">
+              <h3 className="font-bold text-lg">Orrori Grammaticali</h3>
+              <p className="text-indigo-200">Esempi casuali di "piuttosto che" selvaggio</p>
+              <p className="text-xs text-indigo-300 italic">🎭 {currentIronicPhrases.examples}</p>
+            </div>
+            <AlertTriangle className="ml-auto text-cyan-300" />
+          </button>
 
-        <button
-          onClick={() => {
-            reshuffleContent();
-            setCurrentScreen('quiz');
-          }}
-          className="w-full bg-gradient-to-r from-slate-700 to-slate-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
-        >
-          <div className="text-3xl">🧠</div>
-          <div className="text-left">
-            <h3 className="font-bold text-lg">Test Anti-Virus</h3>
-            <p className="text-slate-200">Quiz casuali per testare la tua immunità</p>
-            <p className="text-xs text-slate-300 italic">🧪 {getRandomIronicPhrase()}</p>
-          </div>
-          <Coffee className="ml-auto" />
-        </button>
+          <button
+            onClick={() => {
+              reshuffleContent();
+              setCurrentScreen('quiz');
+            }}
+            className="w-full bg-gradient-to-r from-slate-700 to-slate-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+          >
+            <div className="text-3xl">🧠</div>
+            <div className="text-left">
+              <h3 className="font-bold text-lg">Test Anti-Virus</h3>
+              <p className="text-slate-200">Quiz casuali per testare la tua immunità</p>
+              <p className="text-xs text-slate-300 italic">🧪 {currentIronicPhrases.quiz}</p>
+            </div>
+            <Coffee className="ml-auto" />
+          </button>
 
-        <button
-          onClick={() => setCurrentScreen('about')}
-          className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
-        >
-          <div className="text-3xl">🤫</div>
-          <div className="text-left">
-            <h3 className="font-bold text-lg">Il Grande Segreto</h3>
-            <p className="text-blue-200">Scopri la verità sul "piuttosto che"</p>
-          </div>
-          <BookOpen className="ml-auto" />
-        </button>
+          <button
+            onClick={() => setCurrentScreen('about')}
+            className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+          >
+            <div className="text-3xl">🤫</div>
+            <div className="text-left">
+              <h3 className="font-bold text-lg">Il Grande Segreto</h3>
+              <p className="text-blue-200">Scopri la verità sul "piuttosto che"</p>
+            </div>
+            <BookOpen className="ml-auto" />
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -368,7 +392,7 @@ const TiSveloUnSegretoApp = () => {
             <div className="text-center mb-4">
               <div className="text-6xl mb-2">😱</div>
               <h2 className="text-xl font-bold text-red-300">ERRORE RILEVATO!</h2>
-              <p className="text-sm text-red-200 italic mt-2">🎪 {getRandomIronicPhrase()}</p>
+              <p className="text-sm text-red-200 italic mt-2">🎪 {currentIronicPhrases.examples}</p>
             </div>
             
             <div className="bg-red-500/30 p-4 rounded-lg mb-4">
@@ -462,7 +486,7 @@ const TiSveloUnSegretoApp = () => {
               <div className="text-center mb-4">
                 <div className="text-5xl mb-2">🤔</div>
                 <h2 className="text-xl font-bold">{quiz.question}</h2>
-                <p className="text-sm text-blue-200 italic mt-2">🎯 {getRandomIronicPhrase()}</p>
+                <p className="text-sm text-blue-200 italic mt-2">🎯 {currentIronicPhrases.quiz}</p>
               </div>
               
               <div className="space-y-3 mt-6">
@@ -560,7 +584,7 @@ const TiSveloUnSegretoApp = () => {
               <div className="text-6xl mb-2">✏️</div>
               <h3 className="text-xl font-bold">Crea il tuo Bart personalizzato!</h3>
               <p className="text-gray-300">Perfetto da mandare agli amici che abusano del "piuttosto che"</p>
-              <p className="text-sm text-blue-300 italic mt-2">✨ {getRandomIronicPhrase()}</p>
+              <p className="text-sm text-blue-300 italic mt-2">✨ {currentIronicPhrases.bartGenerator}</p>
             </div>
 
             <div className="space-y-4">
@@ -645,7 +669,7 @@ const TiSveloUnSegretoApp = () => {
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
           <div className="text-6xl mb-4">🎭</div>
           <h3 className="text-2xl font-bold mb-4">La Verità Rivelata</h3>
-          <p className="text-sm text-cyan-200 italic mb-4">🕵️ {getRandomIronicPhrase()}</p>
+          <p className="text-sm text-cyan-200 italic mb-4">🕵️ {currentIronicPhrases.about}</p>
           <div className="text-left space-y-4">
             <div className="bg-red-500/20 p-4 rounded-lg">
               <p className="font-bold text-red-300">❌ FALSO:</p>
