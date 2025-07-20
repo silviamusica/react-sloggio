@@ -269,9 +269,9 @@ const TiSveloUnSegretoApp = () => {
       <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto text-white py-6 px-4">
         {/* Header */}
         <div className="p-6 text-center">
-          <h1 className="text-4xl font-bold mb-2">Piuttosto che? 😨</h1>
+          <h1 className="text-4xl font-bold mb-2">🔥 NUOVO! Piuttosto che? 😨</h1>
           <p className="text-xl text-cyan-200">"Piuttosto che" NON significa "oppure"</p>
-          <p className="text-sm text-cyan-300 opacity-75">v2.0 - Aggiornato ora!</p>
+          <p className="text-sm text-cyan-300 opacity-75">🚀 v2.1 - Deploy Test Live!</p>
           <div className="bg-black/30 backdrop-blur-lg rounded-xl p-4 mt-4">
             <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
             <p className="text-xs text-cyan-400 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
