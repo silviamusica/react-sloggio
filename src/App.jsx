@@ -148,61 +148,61 @@ const TiSveloUnSegretoApp = () => {
       wrong: "Stasera possiamo mangiare pizza 'piuttosto che' pasta 'piuttosto che' sushi 'piuttosto che' hamburger.",
       correct: "Stasera possiamo mangiare pizza, pasta, sushi 'o' hamburger.",
       explanation: "Quando elenchi opzioni, usa 'o' o le virgole. Il 'piuttosto che' non è un jolly universale!",
-      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Puoi chiamarmi 'piuttosto che' scrivermi 'piuttosto che' venire a casa 'piuttosto che' non fare nulla.",
       correct: "Puoi chiamarmi, scrivermi, venire a casa 'o' non fare nulla.",
       explanation: "'Piuttosto che' significa 'anziché' (preferenza), non è una lista della spesa!",
-      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Andiamo al mare 'piuttosto che' in montagna 'piuttosto che' al lago 'piuttosto che' in città?",
       correct: "Andiamo al mare, in montagna, al lago 'o' in città?",
       explanation: "Per le domande con scelte multiple, 'piuttosto che' è fuori luogo come un pinguino nel Sahara!",
-      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Esco con Marco 'piuttosto che' Luca 'piuttosto che' Sara 'piuttosto che' resto a casa.",
       correct: "Esco con Marco, Luca, Sara 'o' resto a casa.",
       explanation: "I tuoi amici non sono alternative da scartare, sono opzioni tra cui scegliere!",
-      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Compro il vestito rosso 'piuttosto che' blu 'piuttosto che' verde 'piuttosto che' nero.",
       correct: "Compro il vestito rosso, blu, verde 'o' nero.",
       explanation: "I colori non si escludono a vicenda, si scelgono! Il 'piuttosto che' non è un arcobaleno grammaticale!",
-      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Studio matematica 'piuttosto che' italiano 'piuttosto che' storia 'piuttosto che' scienze.",
       correct: "Studio matematica, italiano, storia 'o' scienze.",
       explanation: "Le materie scolastiche meritano rispetto grammaticale! Non sono nemiche tra loro!",
-      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Guardo Netflix piuttosto che YouTube piuttosto che Amazon Prime piuttosto che vado a dormire.",
       correct: "Guardo Netflix, YouTube, Amazon Prime O vado a dormire.",
       explanation: "Lo streaming non è una guerra! Sono opzioni per il tuo tempo libero!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Bevo caffè piuttosto che tè piuttosto che acqua piuttosto che succo di frutta.",
       correct: "Bevo caffè, tè, acqua O succo di frutta.",
       explanation: "Le bevande non sono in competizione! Il 'piuttosto che' non è un barista!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Lavoro in ufficio piuttosto che da casa piuttosto che in co-working piuttosto che al bar.",
       correct: "Lavoro in ufficio, da casa, in co-working O al bar.",
       explanation: "I luoghi di lavoro sono opzioni, non battaglie territoriali!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     },
     {
       wrong: "Parto lunedì piuttosto che martedì piuttosto che mercoledì piuttosto che non parto.",
       correct: "Parto lunedì, martedì, mercoledì O non parto.",
       explanation: "I giorni della settimana non sono in conflitto! Sono solo... giorni!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente."
     }
   ];
 
@@ -296,9 +296,9 @@ const TiSveloUnSegretoApp = () => {
         <div className="p-6 text-center">
           <h1 className="text-4xl font-bold mb-2">🔥 Piuttosto che? 😨</h1>
           <p className="text-xl text-cyan-200">"Piuttosto che" NON significa "oppure"</p>
-          <div className="bg-black/30 backdrop-blur-lg rounded-xl p-4 mt-4">
+          <div className="bg-slate-800/90 backdrop-blur-lg rounded-xl p-4 mt-4 border border-slate-600">
             <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
-            <p className="text-xs text-cyan-400 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
+            <p className="text-xs text-slate-300 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
           </div>
         </div>
 
@@ -366,14 +366,14 @@ const TiSveloUnSegretoApp = () => {
             onClick={() => {
               reshuffleContent();
               setCurrentScreen('examples');
-              setCurrentBartPhrase(getRandomIronicPhrase()); // Assicura che la frase cambi sempre
+              setCurrentBartPhrase(getRandomIronicPhrase());
             }}
-            className="w-full bg-gradient-to-r from-indigo-700 to-blue-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+            className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-4 rounded-2xl flex items-center space-x-4 hover:scale-105 transition-transform"
           >
             <div className="text-3xl">🤦‍♂️</div>
             <div className="text-left">
               <h3 className="font-bold text-lg">Orrori Grammaticali</h3>
-              <p className="text-indigo-200">Esempi casuali di "piuttosto che" selvaggio</p>
+              <p className="text-white">Esempi casuali di "piuttosto che" selvaggio</p>
             </div>
             <AlertTriangle className="ml-auto text-cyan-300" />
           </button>
@@ -383,24 +383,24 @@ const TiSveloUnSegretoApp = () => {
               reshuffleContent();
               setCurrentScreen('quiz');
             }}
-            className="w-full bg-gradient-to-r from-slate-700 to-slate-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+            className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-4 rounded-2xl flex items-center space-x-4 hover:scale-105 transition-transform"
           >
             <div className="text-3xl">🧠</div>
             <div className="text-left">
               <h3 className="font-bold text-lg">Test Anti-Virus</h3>
-              <p className="text-slate-200">Quiz casuali per testare la tua immunità</p>
+              <p className="text-white">Quiz casuali per testare la tua immunità</p>
             </div>
             <Coffee className="ml-auto" />
           </button>
 
           <button
             onClick={() => setCurrentScreen('about')}
-            className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 p-4 rounded-xl flex items-center space-x-4 hover:scale-105 transition-transform"
+            className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-4 rounded-2xl flex items-center space-x-4 hover:scale-105 transition-transform"
           >
             <div className="text-3xl">🤫</div>
             <div className="text-left">
               <h3 className="font-bold text-lg">Il Grande Segreto</h3>
-              <p className="text-blue-200">Scopri la verità sul "piuttosto che"</p>
+              <p className="text-white">Scopri la verità sul "piuttosto che"</p>
             </div>
             <BookOpen className="ml-auto" />
           </button>
@@ -447,7 +447,7 @@ const TiSveloUnSegretoApp = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+            <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6">
               <div className="text-center mb-4">
                 <h2 className="text-xl font-bold text-blue-300">ERRORE RILEVATO!</h2>
               </div>
@@ -469,15 +469,15 @@ const TiSveloUnSegretoApp = () => {
             </div>
 
             {/* Bart Section */}
-            <div className="bg-slate-700 rounded-xl p-4 border-2 border-slate-500">
+            <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-xl p-4">
               <div className="flex items-center mb-2">
                 <div className="text-2xl mr-2">👦</div>
-                <p className="text-slate-200 font-bold">Bart deve scrivere:</p>
+                <p className="text-white font-bold">Bart deve scrivere:</p>
               </div>
-              <div className="bg-slate-800 p-3 rounded font-mono text-slate-300 text-sm">
+              <div className="bg-white/20 p-3 rounded font-mono text-white text-sm">
                 {example.bartText}
               </div>
-              <p className="text-xs text-slate-400 mt-2">...100 volte alla lavagna (come ai bei tempi!) 📝</p>
+              <p className="text-xs text-white mt-2">...100 volte alla lavagna (come ai bei tempi!) 📝</p>
             </div>
 
             <div className="flex space-x-3">
@@ -488,7 +488,7 @@ const TiSveloUnSegretoApp = () => {
                   }
                 }}
                 disabled={currentExample === 0}
-                className="flex-1 bg-gray-600 p-3 rounded-lg font-bold disabled:opacity-50"
+                className="flex-1 bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-3 rounded-lg font-bold disabled:opacity-50"
               >
                 ← Precedente
               </button>
@@ -503,7 +503,7 @@ const TiSveloUnSegretoApp = () => {
                     setCurrentExample(0);
                   }
                 }}
-                className="flex-1 bg-slate-600 text-white p-3 rounded-lg font-bold"
+                className="flex-1 bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-3 rounded-lg font-bold"
               >
                 {currentExample < examplesArray.length - 1 ? 'Prossimo Orrore →' : 'Ho Capito! 🎯'}
               </button>
@@ -541,7 +541,7 @@ const TiSveloUnSegretoApp = () => {
 
           {!showResult ? (
             <div className="space-y-6">
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+              <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6">
                 <div className="text-center mb-4">
                   <h2 className="text-xl font-bold">{quiz.question}</h2>
                 </div>
@@ -566,14 +566,14 @@ const TiSveloUnSegretoApp = () => {
               <button
                 onClick={() => setShowResult(true)}
                 disabled={selectedAnswer === ''}
-                className="w-full bg-slate-600 text-white p-4 rounded-lg font-bold text-lg disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-4 rounded-lg font-bold text-lg disabled:opacity-50"
               >
                 Rivela la Verità! 🕵️
               </button>
             </div>
           ) : (
             <div className="space-y-6">
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
+              <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6 text-center">
                 {selectedAnswer === quiz.correct ? (
                   <div>
                     <h2 className="text-2xl font-bold text-blue-300 mb-4">CORRETTO!</h2>
@@ -583,9 +583,9 @@ const TiSveloUnSegretoApp = () => {
                   <div>
                     <h2 className="text-2xl font-bold text-slate-300 mb-4">Oops!</h2>
                     <p className="text-lg mb-4">Niente panico, anche Dante sbagliava... forse!</p>
-                    <div className="bg-slate-800 rounded-xl p-4 mt-4 border-4 border-cyan-400 text-center">
+                    <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-xl p-4 mt-4 text-center">
                       <h3 className="text-lg font-bold mb-2">Bart ti punisce:</h3>
-                      <p className="italic text-cyan-200">scrivi 100 volte alla lavagna:<br/>"usare Piuttosto che al posto di oppure non mi fa sembrare più intelligente"</p>
+                      <p className="italic text-white">scrivi 100 volte alla lavagna:<br/>Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare intelligente.</p>
                     </div>
                   </div>
                 )}
@@ -608,7 +608,7 @@ const TiSveloUnSegretoApp = () => {
                     setShowResult(false);
                   }
                 }}
-                className="w-full bg-slate-600 text-white p-4 rounded-lg font-bold text-lg"
+                className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-4 rounded-lg font-bold text-lg"
               >
                 {currentQuiz < quizzesArray.length - 1 ? 'Prossimo Test' : 'Sono Illuminato! ✨'}
               </button>
@@ -640,7 +640,7 @@ const TiSveloUnSegretoApp = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+            <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6">
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold">Crea il tuo Bart personalizzato!</h3>
                 <p className="text-gray-300">Perfetto da mandare agli amici che abusano del "piuttosto che"</p>
@@ -663,7 +663,7 @@ const TiSveloUnSegretoApp = () => {
                 <button
                   onClick={generateBart}
                   disabled={!customText.trim()}
-                  className="w-full bg-slate-600 text-white p-3 rounded-lg font-bold disabled:opacity-50"
+                  className="w-full bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-3 rounded-lg font-bold disabled:opacity-50"
                 >
                   🎯 Genera Bart alla Lavagna!
                 </button>
@@ -671,7 +671,7 @@ const TiSveloUnSegretoApp = () => {
             </div>
 
             {generatedBart && (
-              <div className="bg-slate-800 rounded-xl p-4 border-4 border-cyan-400">
+              <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center">
                     <div className="text-3xl mr-3">👦</div>
@@ -682,12 +682,12 @@ const TiSveloUnSegretoApp = () => {
                       navigator.clipboard.writeText(generatedBart);
                       alert('Copiato! Ora puoi mandarlo ai tuoi amici! 📱');
                     }}
-                    className="bg-slate-600 text-white px-3 py-1 rounded text-sm font-bold"
+                    className="bg-white/20 hover:bg-white/30 text-white px-3 py-1 rounded text-sm font-bold"
                   >
                     📋 Copia e condividi con i bisognosi
                   </button>
                 </div>
-                <div className="bg-slate-900 p-4 rounded-lg font-mono text-slate-300 text-sm leading-tight max-h-48 overflow-y-auto">
+                <div className="bg-white/20 p-4 rounded-lg font-mono text-white text-sm leading-tight max-h-48 overflow-y-auto">
                   <pre className="whitespace-pre-wrap">{generatedBart}</pre>
                 </div>
               </div>
@@ -727,7 +727,7 @@ const TiSveloUnSegretoApp = () => {
         </div>
 
         <div className="space-y-6">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center">
+          <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6 text-center">
             <div className="text-left space-y-4">
               <div className="bg-red-500/20 p-4 rounded-lg">
                 <p className="font-bold text-red-300">❌ FALSO:</p>
@@ -740,7 +740,7 @@ const TiSveloUnSegretoApp = () => {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+          <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6">
             <h4 className="text-lg font-bold mb-3">📚 Esempi corretti:</h4>
             <div className="space-y-3 text-sm">
               <div className="bg-green-500/20 p-3 rounded">
@@ -758,20 +758,20 @@ const TiSveloUnSegretoApp = () => {
             </div>
           </div>
 
-          <div className="bg-slate-600/20 backdrop-blur-lg rounded-2xl p-6">
+          <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6">
             <h4 className="text-lg font-bold mb-3">🎯 Missione dell'app:</h4>
             <p>Salvare il "piuttosto che" dall'abuso e restituirgli la dignità grammaticale che merita!</p>
-            <p className="mt-2 text-sm text-slate-300">Con ironia, sarcasmo e tanto amore per l'italiano corretto ❤️</p>
+            <p className="mt-2 text-sm text-white">Con ironia, sarcasmo e tanto amore per l'italiano corretto ❤️</p>
             <div className="mt-4 space-y-2">
-              <p className="text-sm text-slate-200"><strong>Finta eleganza:</strong> molti lo usano per sembrare più "raffinati", ma l'effetto è opposto.</p>
-              <p className="text-sm text-slate-200">"Piuttosto che" non eleva il discorso. Lo seppellisce.</p>
+              <p className="text-sm text-white"><strong>Finta eleganza:</strong> molti lo usano per sembrare più "raffinati", ma l'effetto è opposto.</p>
+              <p className="text-sm text-white">"Piuttosto che" non eleva il discorso. Lo seppellisce.</p>
             </div>
           </div>
 
-          <div className="bg-purple-600/20 backdrop-blur-lg rounded-2xl p-6 text-center">
+          <div className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white rounded-2xl p-6 text-center">
             <button
               onClick={() => window.open('https://youtu.be/eo5KBhutwxU?si=038JlL7P1BRNPbPM&t=51', '_blank')}
-              className="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-lg font-bold transition-colors flex items-center mx-auto space-x-2"
+              className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-bold transition-colors flex items-center mx-auto space-x-2"
             >
               <span>▶️</span>
               <span>Guarda il video</span>
