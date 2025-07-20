@@ -278,7 +278,7 @@ const TiSveloUnSegretoApp = () => {
       result += `${i}. ${customText}\n`;
     }
     result += '\n...e altre 900 volte per completare le 1000!\n\n';
-    result += '📝 Generato da "Ti Svelo Un Segreto" - L\'app che salva il "piuttosto che"';
+    result += '📝 Generato da "Piuttosto che App" - L\'app che salva il "piuttosto che"';
     
     setGeneratedBart(result);
     setBartLines(bartLines + 1);
