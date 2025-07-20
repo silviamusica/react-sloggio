@@ -23,17 +23,17 @@ const TiSveloUnSegretoApp = () => {
 
   // Frasi ironiche random
   const ironicPhrases = [
-    "Piuttosto che non è un 'oppure' per snob.",
+    "'Piuttosto che' non è un 'oppure' per snob.",
     "Ti piace complicarti la vita? Usa 'piuttosto che' a caso.",
     "'Piuttosto che' trendy? Solo per chi ama i malintesi.",
-    "Preferisci confondere tutti? Piuttosto che… usa 'oppure'.",
-    "'Piuttosto che': effetto raffinato, risultato disastroso.",
+    "Preferisci confondere tutti? 'Piuttosto che'… usa 'oppure'.",
+    'Piuttosto che: effetto raffinato, risultato disastroso.',
     "Vuoi sembrare colto? Meglio tacere che dire 'piuttosto che'.",
     "'Piuttosto che' non ti salva dal ridicolo.",
     "Con 'piuttosto che' sbagliato, sembri solo incerto.",
     "'Oppure' funziona, 'piuttosto che'… NO!.",
     "'Piuttosto che' usato male: il modo più veloce per perdere punti.",
-    "Ma oppure vi fa così schifo?"
+    "Ma 'oppure' vi fa così schifo?"
   ];
 
   // Funzione per ottenere una frase ironica random (evita ripetizioni)
@@ -145,40 +145,40 @@ const TiSveloUnSegretoApp = () => {
   // Esempi di "piuttosto che" usato male (con più opzioni)
   const wrongExamples = [
     {
-      wrong: "Stasera possiamo mangiare pizza piuttosto che pasta piuttosto che sushi piuttosto che hamburger.",
-      correct: "Stasera possiamo mangiare pizza, pasta, sushi O hamburger.",
+      wrong: "Stasera possiamo mangiare pizza 'piuttosto che' pasta 'piuttosto che' sushi 'piuttosto che' hamburger.",
+      correct: "Stasera possiamo mangiare pizza, pasta, sushi 'o' hamburger.",
       explanation: "Quando elenchi opzioni, usa 'o' o le virgole. Il 'piuttosto che' non è un jolly universale!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
     },
     {
-      wrong: "Puoi chiamarmi piuttosto che scrivermi piuttosto che venire a casa piuttosto che non fare nulla.",
-      correct: "Puoi chiamarmi, scrivermi, venire a casa O non fare nulla.",
+      wrong: "Puoi chiamarmi 'piuttosto che' scrivermi 'piuttosto che' venire a casa 'piuttosto che' non fare nulla.",
+      correct: "Puoi chiamarmi, scrivermi, venire a casa 'o' non fare nulla.",
       explanation: "'Piuttosto che' significa 'anziché' (preferenza), non è una lista della spesa!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
     },
     {
-      wrong: "Andiamo al mare piuttosto che in montagna piuttosto che al lago piuttosto che in città?",
-      correct: "Andiamo al mare, in montagna, al lago O in città?",
+      wrong: "Andiamo al mare 'piuttosto che' in montagna 'piuttosto che' al lago 'piuttosto che' in città?",
+      correct: "Andiamo al mare, in montagna, al lago 'o' in città?",
       explanation: "Per le domande con scelte multiple, 'piuttosto che' è fuori luogo come un pinguino nel Sahara!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
     },
     {
-      wrong: "Esco con Marco piuttosto che Luca piuttosto che Sara piuttosto che resto a casa.",
-      correct: "Esco con Marco, Luca, Sara O resto a casa.",
+      wrong: "Esco con Marco 'piuttosto che' Luca 'piuttosto che' Sara 'piuttosto che' resto a casa.",
+      correct: "Esco con Marco, Luca, Sara 'o' resto a casa.",
       explanation: "I tuoi amici non sono alternative da scartare, sono opzioni tra cui scegliere!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
     },
     {
-      wrong: "Compro il vestito rosso piuttosto che blu piuttosto che verde piuttosto che nero.",
-      correct: "Compro il vestito rosso, blu, verde O nero.",
+      wrong: "Compro il vestito rosso 'piuttosto che' blu 'piuttosto che' verde 'piuttosto che' nero.",
+      correct: "Compro il vestito rosso, blu, verde 'o' nero.",
       explanation: "I colori non si escludono a vicenda, si scelgono! Il 'piuttosto che' non è un arcobaleno grammaticale!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
     },
     {
-      wrong: "Studio matematica piuttosto che italiano piuttosto che storia piuttosto che scienze.",
-      correct: "Studio matematica, italiano, storia O scienze.",
+      wrong: "Studio matematica 'piuttosto che' italiano 'piuttosto che' storia 'piuttosto che' scienze.",
+      correct: "Studio matematica, italiano, storia 'o' scienze.",
       explanation: "Le materie scolastiche meritano rispetto grammaticale! Non sono nemiche tra loro!",
-      bartText: "Usare piuttosto che al posto di oppure non mi farà sembrare intelligente"
+      bartText: "Usare 'piuttosto che' al posto di 'oppure' non mi farà sembrare più intelligente"
     },
     {
       wrong: "Guardo Netflix piuttosto che YouTube piuttosto che Amazon Prime piuttosto che vado a dormire.",
