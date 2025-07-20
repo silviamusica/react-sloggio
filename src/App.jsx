@@ -16,7 +16,7 @@ const TiSveloUnSegretoApp = () => {
   const [generatedBart, setGeneratedBart] = useState('');
   const [shuffledExamples, setShuffledExamples] = useState([]);
   const [shuffledQuizzes, setShuffledQuizzes] = useState([]);
-  const [showBartSection, setShowBartSection] = useState(true);
+  const [showBartSection, setShowBartSection] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [currentBartPhrase, setCurrentBartPhrase] = useState('');
@@ -580,6 +580,10 @@ const TiSveloUnSegretoApp = () => {
                   <div>
                     <h2 className="text-2xl font-bold text-slate-300 mb-4">Oops!</h2>
                     <p className="text-lg mb-4">Niente panico, anche Dante sbagliava... forse!</p>
+                    <div className="bg-slate-800 rounded-xl p-4 mt-4 border-4 border-cyan-400 text-center">
+                      <h3 className="text-lg font-bold mb-2">Bart ti punisce:</h3>
+                      <p className="italic text-cyan-200">scrivi 100 volte alla lavagna:<br/>"usare Piuttosto che al posto di oppure non mi fa sembrare più intelligente"</p>
+                    </div>
                   </div>
                 )}
                 <div className="bg-blue-500/20 p-4 rounded-lg">
