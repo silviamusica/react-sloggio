@@ -20,6 +20,7 @@ const TiSveloUnSegretoApp = () => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [currentBartPhrase, setCurrentBartPhrase] = useState('');
+  const [secretCommand, setSecretCommand] = useState('');
 
   // Frasi ironiche random
   const ironicPhrases = [
@@ -59,6 +60,28 @@ const TiSveloUnSegretoApp = () => {
     navigator.clipboard.writeText(currentBartPhrase);
     alert('Frase copiata! Mandale ai tuoi amici e salva un\'anima!');
   };
+
+  // Gestione comandi segreti
+  const handleKeyPress = (e) => {
+    const newCommand = secretCommand + e.key.toLowerCase();
+    setSecretCommand(newCommand);
+    
+    if (newCommand.includes('ghg')) {
+      setCurrentScreen('allQuestions');
+      setSecretCommand('');
+    } else if (newCommand.includes('fgf')) {
+      setCurrentScreen('allExamples');
+      setSecretCommand('');
+    } else if (newCommand.length > 10) {
+      setSecretCommand('');
+    }
+  };
+
+  // Aggiungi listener per i tasti
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [secretCommand]);
 
   // Gestione swipe per mobile
   const minSwipeDistance = 50;
@@ -299,6 +322,7 @@ const TiSveloUnSegretoApp = () => {
           <div className="bg-slate-800/90 backdrop-blur-lg rounded-xl p-4 mt-4 border border-slate-600">
             <p className="text-lg">📊 Anime salvate: <span className="font-bold text-cyan-300">{savedSouls}</span></p>
             <p className="text-xs text-slate-300 mt-2">📱 Swipe da sinistra a destra per tornare al menu</p>
+            <p className="text-xs text-slate-400 mt-1">🔍 Comandi segreti: ghg • fgf</p>
           </div>
         </div>
 
@@ -717,6 +741,115 @@ const TiSveloUnSegretoApp = () => {
     );
   };
 
+  const renderAllQuestions = () => (
+    <div 
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-blue-800 text-white"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto p-6">
+        <div className="flex justify-between items-center mb-6">
+          <button 
+            onClick={() => setCurrentScreen('home')}
+            className="bg-white/20 p-2 rounded-lg"
+          >
+            Menu
+          </button>
+          <h2 className="text-xl font-bold">🧠 Tutte le Domande</h2>
+          <div className="text-2xl">📝</div>
+        </div>
+
+        <div className="space-y-4">
+          {quizzes.map((quiz, index) => (
+            <div key={index} className="bg-gradient-to-r from-purple-700 to-blue-600 text-white rounded-2xl p-6">
+              <h3 className="text-lg font-bold mb-4">
+                Domanda {index + 1}: {quiz.question}
+              </h3>
+              
+              <div className="space-y-2 mb-4">
+                {quiz.options.map((option, optIndex) => (
+                  <div 
+                    key={optIndex} 
+                    className={`p-3 rounded-lg ${
+                      optIndex === quiz.correct 
+                        ? 'bg-green-500/30 border-2 border-green-400' 
+                        : 'bg-white/10'
+                    }`}
+                  >
+                    <span className="font-bold">{optIndex === quiz.correct ? '✅' : '•'}</span> {option}
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-blue-500/20 p-4 rounded-lg mb-3">
+                <p className="text-sm font-bold mb-2">💡 Spiegazione:</p>
+                <p className="text-blue-200">{quiz.explanation}</p>
+              </div>
+
+              <div className="bg-green-500/20 p-4 rounded-lg">
+                <p className="text-sm font-bold mb-2">🎯 Risposta corretta:</p>
+                <p className="text-green-200">{quiz.sarcasm}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderAllExamples = () => (
+    <div 
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-orange-800 text-white"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      <div className="w-full max-w-xl lg:max-w-4xl xl:max-w-6xl mx-auto p-6">
+        <div className="flex justify-between items-center mb-6">
+          <button 
+            onClick={() => setCurrentScreen('home')}
+            className="bg-white/20 p-2 rounded-lg"
+          >
+            Menu
+          </button>
+          <h2 className="text-xl font-bold">🤦‍♂️ Tutti gli Esempi</h2>
+          <div className="text-2xl">📚</div>
+        </div>
+
+        <div className="space-y-4">
+          {wrongExamples.map((example, index) => (
+            <div key={index} className="bg-gradient-to-r from-red-700 to-orange-600 text-white rounded-2xl p-6">
+              <h3 className="text-lg font-bold mb-4 text-center">
+                Esempio {index + 1}
+              </h3>
+              
+              <div className="bg-red-500/20 p-4 rounded-lg mb-4">
+                <p className="text-lg font-bold">❌ SBAGLIATO:</p>
+                <p className="text-red-200 italic">"{example.wrong}"</p>
+              </div>
+
+              <div className="bg-green-500/20 p-4 rounded-lg mb-4">
+                <p className="text-lg font-bold">✅ CORRETTO:</p>
+                <p className="text-green-200 italic">"{example.correct}"</p>
+              </div>
+
+              <div className="bg-orange-500/20 p-4 rounded-lg mb-4">
+                <p className="text-sm font-bold mb-2">💡 PERCHÉ:</p>
+                <p className="text-orange-200">{example.explanation}</p>
+              </div>
+
+              <div className="bg-yellow-500/20 p-4 rounded-lg">
+                <p className="text-sm font-bold mb-2">👦 Bart deve scrivere:</p>
+                <p className="text-yellow-200 font-mono text-sm">{example.bartText}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
   const renderAbout = () => (
     <div 
       className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-800 to-cyan-700 text-white"
@@ -802,6 +935,10 @@ const TiSveloUnSegretoApp = () => {
       return renderBartGenerator();
     case 'about':
       return renderAbout();
+    case 'allQuestions':
+      return renderAllQuestions();
+    case 'allExamples':
+      return renderAllExamples();
     default:
       return renderHome();
   }
